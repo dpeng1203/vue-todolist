@@ -44,7 +44,7 @@ main{
   overflow: hidden;
 }
 main > .et{
-  width: 20em;
+  width: 30em;
   margin: 16px 8px 16px 16px;
   border: 1px solid bisque;
   background: #fff;
