@@ -12,32 +12,21 @@
         </nav>
         <ol class="panes">
             <li :class="{active: currentTab === 0}">
-                <h2>个人信息</h2>
-                <el-form>
-                    <el-form-item label="姓名">
-                        <el-input v-model="profile.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="城市">
-                        <el-input v-model="profile.city"></el-input>
-                    </el-form-item>
-                    <el-form-item label="出生年龄"> 
-                        <el-input v-model="profile.birth"></el-input>
-                    </el-form-item>
-                </el-form>
+                <ProfileEditor :profile='profile'/>
             </li>
             <li :class="{active: currentTab === 1}">
                 <h2>个人经历</h2>
                 <el-form>
                     <div class="container" v-for="(work,index) in workHistory">
-                       
-                        <el-form-item label="时间段">
-                            <el-input v-model="work.company"></el-input>
-                        </el-form-item>
-                        <el-form-item label="记忆犹新记录">
-                            <el-input v-model="work.content"></el-input>
-                        </el-form-item>
-                        <el-button type="danger" icon="el-icon-delete" circle @click="removeWorkHistory(index)" class= "el-icon-delete"></el-button>
-                         <hr>
+                
+                    <el-form-item label="时间段">
+                        <el-input v-model="work.company"></el-input>
+                    </el-form-item>
+                    <el-form-item label="记忆犹新记录">
+                        <el-input v-model="work.content"></el-input>
+                    </el-form-item>
+                    <el-button type="danger" icon="el-icon-delete" circle @click="removeWorkHistory(index)" class= "el-icon-delete"></el-button>
+                        <hr>
                     </div>
                 </el-form>
                 <el-button type="success" @click="addWorkHistory">添加个人经历</el-button>
@@ -103,7 +92,9 @@
 </template>
 
 <script>
+import ProfileEditor from './ProfileEditor'
 export default {
+    components: { ProfileEditor },
     data() {
         return{
             currentTab: 0,
