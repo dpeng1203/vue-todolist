@@ -15,63 +15,26 @@
                 <ProfileEditor :profile='profile'/>
             </li>
             <li :class="{active: currentTab === 1}">
-                <h2>个人经历</h2>
-                <el-form>
-                    <div class="container" v-for="(work,index) in workHistory">
-                
-                    <el-form-item label="时间段">
-                        <el-input v-model="work.company"></el-input>
-                    </el-form-item>
-                    <el-form-item label="记忆犹新记录">
-                        <el-input v-model="work.content"></el-input>
-                    </el-form-item>
-                    <el-button type="danger" icon="el-icon-delete" circle @click="removeWorkHistory(index)" class= "el-icon-delete"></el-button>
-                        <hr>
-                    </div>
-                </el-form>
-                <el-button type="success" @click="addWorkHistory">添加个人经历</el-button>
+                <ArrayEditor :items = "workHistory" 
+                             :labels="{company: '公司',content: '工作内容'}" 
+                             title = "工作经历"/>
             </li>
             <li :class="{active: currentTab === 2}">
-                <h2>成长经历</h2>
-                <el-form>
-                    <el-form-item label="高中">
-                        <el-input v-model="profile.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="大学">
-                        <el-input v-model="profile.city"></el-input>
-                    </el-form-item>
-                    <el-form-item label="硕士"> 
-                        <el-input v-model="profile.birth"></el-input>
-                    </el-form-item>
-                </el-form>
+                <ArrayEditor :items = "studyHistory" 
+                             :labels="{school: '公司',duration: '工作内容', degree: '学位'}" 
+                             title = "学习经历"/>
             </li>
             <li :class="{active: currentTab === 3}">
-                <h2>家庭情况</h2>
-                <el-form>
-                    <el-form-item label="父亲">
-                        <el-input v-model="profile.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="母亲">
-                        <el-input v-model="profile.city"></el-input>
-                    </el-form-item>
-                    <el-form-item label="兄弟姐妹"> 
-                        <el-input v-model="profile.birth"></el-input>
-                    </el-form-item>
-                </el-form>
+                <ArrayEditor :items = "projects" 
+                             :labels="{name: '项目名称',content: '工作内容'}" 
+                             title = "项目经历"/>
+
             </li>
             <li :class="{active: currentTab === 4}">
-                <h2>获奖情况</h2>
-                <el-form>
-                    <el-form-item label="时间">
-                        <el-input v-model="profile.name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="事件">
-                        <el-input v-model="profile.city"></el-input>
-                    </el-form-item>
-                    <el-form-item label="感言"> 
-                        <el-input v-model="profile.birth"></el-input>
-                    </el-form-item>
-                </el-form>
+                <ArrayEditor :items = "awards" 
+                             :labels="{name: '项目奖励'}" 
+                             title = "获奖情况"/>
+
             </li>
             <li :class="{active: currentTab === 5}">
                 <h2>联系方式</h2>
@@ -93,8 +56,9 @@
 
 <script>
 import ProfileEditor from './ProfileEditor'
+import ArrayEditor from './ArrayEditor'
 export default {
-    components: { ProfileEditor },
+    components: { ProfileEditor, ArrayEditor },
     data() {
         return{
             currentTab: 0,
@@ -106,18 +70,20 @@ export default {
             },
             workHistory: [
                 {company: '',content: ''}
+            ],
+            studyHistory: [
+                {school: '',duration: '',degree: ''}
+            ],
+            projects: [
+                {name: '',content: ''}
+            ],
+            awards: [
+                {name: ''}
             ]
         }
     },
     methods: {
-        addWorkHistory(){
-            this.workHistory.push({
-                company: '',content: ''
-            })
-        },
-        removeWorkHistory(index){
-            this.workHistory.splice(index,1)
-        }
+        
     },
     created(){
         setTimeout(() => {
