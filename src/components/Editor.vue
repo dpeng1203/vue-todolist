@@ -40,7 +40,7 @@
                          <hr>
                     </div>
                 </el-form>
-                <el-button type="success" @click="addWorkHistory">添加工作经历</el-button>
+                <el-button type="success" @click="addWorkHistory">添加个人经历</el-button>
             </li>
             <li :class="{active: currentTab === 2}">
                 <h2>成长经历</h2>
