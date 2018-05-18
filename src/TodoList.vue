@@ -1,10 +1,11 @@
 <template>
-  <div id="app">
-    <topbar class="title"></topbar>
+  <div id="app" :class="{previewMode: previewMode}">
+    <topbar class="title" @preview="preview"></topbar>
     <main>
-      <editor class="et"></editor>
-      <preview class="view"></preview>
+      <editor class="et" :resume='resume'></editor>
+      <preview class="view" :resume='resume'></preview>
     </main>
+    <el-button type="primary" id="exit" @click="exit">退出</el-button>
   </div>
 </template>
 
@@ -14,10 +15,47 @@ import Preview from './components/Preview'
 import Topbar from './components/Topbar'
 
 export default {
+  data() {
+    return {
+      previewMode: false,
+      resume: {
+        profile: {
+        name: '',
+        city: '',
+        birth: ''
+        },
+        workHistory: [
+          {company: '',content: ''}
+        ],
+        studyHistory: [
+          {school: '',duration: '',degree: ''}
+        ],
+        projects: [
+          {name: '',content: ''}
+        ],
+        awards: [
+          {name: ''}
+        ],
+        contacts: {
+          qq: '',
+          wechat: '',
+          telephone: ''
+        }
+      }
+    }
+  },
   components: {
     'topbar': Topbar,
     'preview': Preview,
     'editor': Editor
+  },
+  methods: {
+    preview () {
+      this.previewMode = true
+    },
+    exit(){
+      this.previewMode = false
+    }
   }
 }
 </script>
@@ -60,4 +98,25 @@ main > .view{
   box-shadow: 0 0 3px hsla(0,0,0,0.5);
   border-radius: 4px;
 }
+
+.previewMode > #topbar{
+  display: none;
+}
+.previewMode #editor{
+  display: none;
+}
+.previewMode #preview{
+  max-width: 800px;
+  margin: 16px auto;
+}
+#exit{
+  display: none;
+}
+.previewMode #exit{
+  display: inline-block;
+  position: fixed;
+  right: 300px;
+  bottom: 32px;
+}
+
 </style>

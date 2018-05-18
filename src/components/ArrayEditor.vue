@@ -9,8 +9,8 @@
             <el-button type="danger" icon="el-icon-delete" circle @click="removeitems(index)" class= "el-icon-delete"></el-button>
             <hr>
             </div>
+            <el-button type="success" @click="additems">添加一项</el-button>
         </el-form>
-        <el-button type="success" @click="additems">添加一项</el-button>
     </div>
 </template>
 

@@ -12,27 +12,27 @@
         </nav>
         <ol class="panes">
             <li :class="{active: currentTab === 0}">
-                <ProfileEditor :profile='profile'/>
+                <ProfileEditor :profile="resume.profile"/>
             </li>
             <li :class="{active: currentTab === 1}">
-                <ArrayEditor :items = "workHistory" 
+                <ArrayEditor :items = "resume.workHistory" 
                              :labels="{company: '公司',content: '工作内容'}" 
                              title = "工作经历"/>
             </li>
             <li :class="{active: currentTab === 2}">
-                <ArrayEditor :items = "studyHistory" 
-                             :labels="{school: '公司',duration: '工作内容', degree: '学位'}" 
+                <ArrayEditor :items = "resume.studyHistory" 
+                             :labels="{school: '学校',duration: '时间段', degree: '学位'}" 
                              title = "学习经历"/>
             </li>
             <li :class="{active: currentTab === 3}">
-                <ArrayEditor :items = "projects" 
-                             :labels="{name: '项目名称',content: '工作内容'}" 
+                <ArrayEditor :items = "resume.projects" 
+                             :labels="{name: '项目名称',content: '项目内容'}" 
                              title = "项目经历"/>
 
             </li>
             <li :class="{active: currentTab === 4}">
-                <ArrayEditor :items = "awards" 
-                             :labels="{name: '项目奖励'}" 
+                <ArrayEditor :items = "resume.awards" 
+                             :labels="{name: '获奖感言'}" 
                              title = "获奖情况"/>
 
             </li>
@@ -40,13 +40,13 @@
                 <h2>联系方式</h2>
                 <el-form>
                     <el-form-item label="QQ">
-                        <el-input v-model="profile.name"></el-input>
+                        <el-input v-model="resume.contacts.qq"></el-input>
                     </el-form-item>
                     <el-form-item label="微信">
-                        <el-input v-model="profile.city"></el-input>
+                        <el-input v-model="resume.contacts.wechat"></el-input>
                     </el-form-item>
-                    <el-form-item label="电话"> 
-                        <el-input v-model="profile.birth"></el-input>
+                    <el-form-item label="电话">
+                        <el-input v-model="resume.contacts.telephone"></el-input>
                     </el-form-item>
                 </el-form>
             </li>
@@ -58,38 +58,18 @@
 import ProfileEditor from './ProfileEditor'
 import ArrayEditor from './ArrayEditor'
 export default {
+    props: ['resume'],
     components: { ProfileEditor, ArrayEditor },
     data() {
         return{
             currentTab: 0,
             icons: ['shenfenzheng','work0','book','heart','goldcup','phone'],
-            profile: {
-                name: '',
-                city: '',
-                birth: ''
-            },
-            workHistory: [
-                {company: '',content: ''}
-            ],
-            studyHistory: [
-                {school: '',duration: '',degree: ''}
-            ],
-            projects: [
-                {name: '',content: ''}
-            ],
-            awards: [
-                {name: ''}
-            ]
+            
         }
     },
     methods: {
         
     },
-    created(){
-        setTimeout(() => {
-            console.log(this.profile)
-        }, 10000);
-    }
 }
 </script>
 
