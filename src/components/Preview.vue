@@ -3,12 +3,12 @@
         <h1>Resume</h1>
         <section>
             <H2>个人信息</H2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <p>{{resume.profile.name || '请填写名字'}} | {{resume.profile.city || '请填写城市'}} | {{resume.profile.birth || '请填写出生年月'}}</p>
         </section>
         <section v-if="filter(resume.workHistory).length > 0">
             <h2>工作经历</h2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <ul>
                 <li v-for="work in filter(resume.workHistory)">
                     公司: {{work.company}}<br>
@@ -19,7 +19,7 @@
         
         <section v-if="filter(resume.studyHistory).length > 0">
             <h2>学习经历</h2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <ul>
                 <li v-for="study in filter(resume.studyHistory)">
                     学校：{{study.school}}<br>
@@ -30,7 +30,7 @@
         </section>
         <section v-if="filter(resume.projects).length > 0">
             <h2>项目经历</h2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <ul>
                 <li v-for="project in filter(resume.projects)">
                     项目名称：{{project.name}}<br>
@@ -40,7 +40,7 @@
         </section>
         <section v-if="filter(resume.awards).length > 0">
             <h2>获奖情况</h2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <ul>
                 <li v-for="work in filter(resume.awards)">
                     获奖感言：{{work.name}}
@@ -49,7 +49,7 @@
         </section>
         <section>
             <h2>联系方式</h2>
-            <hr style="height:3px;border:none;border-top:3px double red;" />
+            <hr style="height:1px;border:none;border-top:1px solid red;" />
             <p>{{resume.contacts.qq || '请填写qq'}} | {{resume.contacts.wechat || '请填写微信'}} | {{resume.contacts.telephone || '请填写电话'}}</p>
         </section>
 

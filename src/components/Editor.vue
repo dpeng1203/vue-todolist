@@ -4,7 +4,7 @@
             <ol>
                 <li v-for="i in [0,1,2,3,4,5]"
                     :class="{active: currentTab === i}"
-                    @click="currentTab = i">
+                    @click="currentTab = i" :key="i.id">
                     <svg class="icon">
                     <use :xlink:href="`#icon-${icons[i]}`"></use></svg>
                 </li>
@@ -103,10 +103,10 @@ export default {
             flex: 1;
             .container{
                 position: relative;
-                .el-icon-delete{
+                .icon-delete{
                     position: absolute;
-                    top: 0;
-                    right: 0;
+                    top: 10px;
+                    right: 10px;
                 }
             }
             > li{

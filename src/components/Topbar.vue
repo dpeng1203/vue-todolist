@@ -4,8 +4,6 @@
             VueResumer
         </div>
         <div class="actions">
-            <el-button>登录</el-button>
-            <el-button type="primary">注册</el-button>
             <el-button type="primary" @click="preview">预览</el-button>
         </div>
     </div>
@@ -28,7 +26,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 16px;
+        padding: 16px 32px;
         font-size: 20px;
     }
 </style>
